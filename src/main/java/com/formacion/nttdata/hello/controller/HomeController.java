@@ -42,10 +42,19 @@ public class HomeController {
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
 
-	public String user(@Validated User user, Model model) {
+	public String user(@Validated User user, Model model, Locale locale) {
 
 		System.out.println("User Page Requested");
-
+		
+		int dig = user.getNumero();
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		date.setDate(date.getDate() + dig );
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("newServerTime", formattedDate);
 		model.addAttribute("userName", user.getUserName());
 
 		return "user";

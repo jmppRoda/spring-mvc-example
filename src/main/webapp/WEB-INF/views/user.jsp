@@ -7,5 +7,6 @@
 </head> 
 <body> 
 <h3>Hi ${userName}</h3> 
+<P>The new time on the server is ${newServerTime}.</p>
 </body> 
 </html>
